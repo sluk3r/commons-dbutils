@@ -32,14 +32,15 @@ public class DbUtilsTest {
 
     @Test
     public void closeNullConnection() throws Exception {
+        //wxc 2016-12-20:15:19:13 ????????????? ???
         DbUtils.close((Connection) null);
     }
 
     @Test
     public void closeConnection() throws Exception {
-        Connection mockCon = mock(Connection.class);
+        Connection mockCon = mock(Connection.class);//wxc pro 2016-12-20:15:21:45 ??Mock?? ????close?????????
         DbUtils.close(mockCon);
-        verify(mockCon).close();
+        verify(mockCon).close();//wxc 2016-12-20:15:20:11 ?????API??????????close?? ????????? ???JUnit?????????
     }
 
     @Test
@@ -68,7 +69,7 @@ public class DbUtilsTest {
 
     @Test
     public void closeQuietlyNullConnection() throws Exception {
-        DbUtils.closeQuietly((Connection) null);
+        DbUtils.closeQuietly((Connection) null);//wxc pro 2016-12-20:15:33:22 ????????
     }
 
     @Test
@@ -80,7 +81,7 @@ public class DbUtilsTest {
 
     @Test
     public void closeQuietlyConnectionThrowingException() throws Exception {
-        Connection mockConnection = mock(Connection.class);
+        Connection mockConnection = mock(Connection.class);//wxc pro 2016-12-20:15:36:33 ??????? ???????? ?????????????
         doThrow(SQLException.class).when(mockConnection).close();
         DbUtils.closeQuietly(mockConnection);
     }
